@@ -1,4 +1,10 @@
 import type { Metadata } from 'next'
+import {Options} from "@/components/options";
+
+import styles from './layout.module.sass'
+import {workerMain} from "next/dist/build/webpack-build/impl";
+import {allowedDisplayValues} from "next/dist/compiled/@next/font/dist/constants";
+import {Header} from "@/components/header";
 
 
 
@@ -13,10 +19,17 @@ export default function MainLayout({
   children: React.ReactNode
 }) {
   return (
+      <div>
+          <header>
+              <Header/>
+          </header>
+          <main className={styles.section}>
+              <Options/>
+              {children}
+          </main>
+      </div>
 
-      <section className={'container'}>
-        {children}
-      </section>
+
 
   )
 }
