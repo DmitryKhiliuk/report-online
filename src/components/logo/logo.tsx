@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from './logo.module.sass'
 
 
-import image from '../../app/assets/logo.svg'
+import image from '../../assets/logo.svg'
 
 export const Logo = () => {
     return (

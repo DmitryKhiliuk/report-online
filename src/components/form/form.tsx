@@ -3,6 +3,10 @@ import React from 'react';
 import {Button, Form, Input} from 'antd';
 
 import styles from './form.module.sass'
+import {HOST} from "@/common/constants";
+import {Cookies} from "react-cookie";
+
+
 
 interface FieldType {
     username?: string;
@@ -10,11 +14,28 @@ interface FieldType {
     remember?: string;
 }
 
+export async function POST(body) {
+    const res = await fetch(HOST+'/token/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body:  JSON.stringify(body),
+    })
+
+    const data = await res.json()
+    const cookies = new Cookies()
+    cookies.set('JWT', data.access)
+    return Response.json(data)
+}
+
+
 export const FormAuth = () => {
 
 
+
     const onFinish = (values: any) => {
-        console.log({username: values.username, password: values.password});
+        POST({username: values.username, password: values.password});
     };
 
     const onFinishFailed = (errorInfo: any) => {

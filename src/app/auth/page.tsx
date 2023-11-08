@@ -4,11 +4,13 @@ import {Divider} from "@/components/divider";
 import {FormAuth} from "@/components/form";
 
 const Auth = () => {
+
+
     return (
         <>
             <Logo/>
             <Divider/>
-            <FormAuth/>
+            <FormAuth />
         </>
     );
 };
